@@ -5,6 +5,8 @@ import os
 from datetime import datetime, timedelta
 from builtin_interfaces.msg import Time
 
+# 제외할 단어 목록
+EXCLUDED_WORDS = {'감사합니다', '고맙습니다', '아멘', '하나님', '.', '네', '이제'}
 
 def time_to_string(timestamp: Time) -> str:
     dt = datetime.fromtimestamp(timestamp.sec) + timedelta(microseconds=timestamp.nanosec / 1000)
@@ -78,13 +80,14 @@ class TranscriptSubscriber(Node):
 
             # Add words to the transcript
             for i in range(seg_begin, seg_end):
-                likelyhood = msg.probs[i] * msg.occ[i]
-                if i < msg.active_index:
-                    if likelyhood >= threshold:
-                        filtered_transcript.append(msg.words[i])
-                else:
-                    filtered_transcript.append(
-                        color_gradient(msg.words[i], likelyhood, 0, threshold))
+                if msg.words[i].strip() not in EXCLUDED_WORDS:
+                    likelyhood = msg.probs[i] * msg.occ[i]
+                    if i < msg.active_index:
+                        if likelyhood >= threshold:
+                            filtered_transcript.append(msg.words[i])
+                    else:
+                        filtered_transcript.append(
+                            color_gradient(msg.words[i], likelyhood, 0, threshold))
 
         transcript_str = ''.join(filtered_transcript)
         os.system('clear')

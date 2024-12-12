@@ -69,4 +69,12 @@ def generate_launch_description() -> LaunchDescription:
         )
     ld.add_action(active_arg) # ARGUMENT MUST GO FIRST!
     ld.add_action(container)
+
+    ld.add_action(
+        Node(
+            package='whisper_demos',
+            executable='stream_tts',
+            name='whisper_tts_client'
+        )
+    )
     return ld

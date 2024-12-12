@@ -52,8 +52,8 @@ void Inference::timer_callback()
 
 void Inference::declare_parameters_() {
   // buffer parameters
-  declare_parameter("buffer_capacity", 2);
-  declare_parameter("callback_ms", 200);
+  declare_parameter("buffer_capacity", 4);
+  declare_parameter("callback_ms", 400);
   declare_parameter("active", true);
 
   // whisper parameters
