@@ -12,8 +12,10 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "action/Inference.action"
+  "action/TTS.action"
   "msg/WhisperTokens.msg"
   "msg/AudioTranscript.msg"
+  "msg/TranscriptSentence.msg"
   DEPENDENCIES
     builtin_interfaces
 )

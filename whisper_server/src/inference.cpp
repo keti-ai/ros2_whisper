@@ -54,13 +54,15 @@ void Inference::declare_parameters_() {
   // buffer parameters
   declare_parameter("buffer_capacity", 2);
   declare_parameter("callback_ms", 200);
-  declare_parameter("active", false);
+  declare_parameter("active", true);
 
   // whisper parameters
-  declare_parameter("model_name", "base.en");
+  // declare_parameter("model_name", "base.en");
+  // declare_parameter("model_name", "zeroth.ko");
+  declare_parameter("model_name", "large-v3-turbo");
   // consider other parameters:
   // https://github.com/ggerganov/whisper.cpp/blob/a4bb2df36aeb4e6cfb0c1ca9fbcf749ef39cc852/whisper.h#L351
-  declare_parameter("wparams.language", "en");
+  declare_parameter("wparams.language", "ko");
   declare_parameter("wparams.n_threads", 4);
   declare_parameter("wparams.print_progress", false);
   declare_parameter("cparams.flash_attn", true);

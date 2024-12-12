@@ -21,6 +21,8 @@ setup(
         "console_scripts": [
             "whisper_on_key = whisper_demos.whisper_on_key:main",
             "stream = whisper_demos.stream:main",
+            "tts = whisper_demos.tts:main",
+            "stream_tts = whisper_demos.stream_tts_client:main"
         ],
     },
 )

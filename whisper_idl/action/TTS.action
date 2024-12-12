@@ -1,0 +1,12 @@
+# TTS.action
+
+# Goal
+string text
+
+---
+# Result
+bool success
+
+---
+# Feedback
+float32 percentage
